@@ -16,23 +16,6 @@ from django.urls import reverse_lazy, reverse
 page_paginator = 10
 
 
-def rules(request):
-    template = 'pages/rules.html'
-    return render(request, template)
-
-
-def page_not_found(request, exception):
-    return render(request, 'pages/404.html', status=404)
-
-
-def tr_handler500(request):
-    return render(request, 'pages/500.html', status=500)
-
-
-def crsf_failure(request, reason=''):
-    return render(request, 'pages/403crsf.html', status=403)
-
-
 class ProfileLoginView(LoginView):
     def get_success_url(self) -> HttpResponse:
         return reverse('blog:profile',
